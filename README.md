@@ -3,7 +3,7 @@ This is a group project for ECE-GY 6143 Introduction to Machine Learning at NYU 
 
 Group 77 members are as below: <br />
 Qin Hu (N17006855) <br />
-Bohan Zhang (N) <br />
+Bohan Zhang (N13992422) <br />
 Yichi Zhang (N19888469) <br />
 Xintong Song (N) <br />
 
