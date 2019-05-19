@@ -15,7 +15,17 @@ Qin Hu (N17006855) <br />
 Bohan Zhang (N13992422) <br />
 Yichi Zhang (N19888469) <br />
 Xintong Song (N13489466) <br />
+<br />
+One of the primary limitations of the original project is the small amount of training data. I tested on various 
+images and at times the classifications were incorrect. When this happened, the input image + network more closely 
+and found that the color(s) most dominant in the image influence the classification dramatically. 
 
+Firstly, we built a new dataset contains 6000+ images of 12 pokemons and tested it on original CNN network.
+<br />
+![alt text](cnn_new_dataset.png) <br />
+<br />
+Then, we tried several different model to deal with this multi-classification.
+<br />
 Method 1 Description: <br />
 Loading the pre-trained parameters from VGG16 and applying its 18 layers to our 5000 data points.
 
