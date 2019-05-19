@@ -36,8 +36,8 @@ Method 2 Description: <br />
 Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) of the dataset and achieve high accuracy at the mean time. <br />
 <br/>
 1.Using GridSearchCV to fit PCA with reduced original data.<br />
-Choosing 4 classes. Each picture is 50x50 size and tranfer to grayscale. So there are 2500 features.
-Parameters are choosing by observation. Random select a range of npc, c, gamma at first. Then, change the range by observing the color map until showing local maximum.
+Choosing 4 classes. Each picture is 50x50 size and tranfer to grayscale. So there are 2500 features.<br />
+Parameters are choosing by observation. Random select a range of npc, c, gamma at first. Then, change the range by observing the color map until showing local maximum.<br />
 Results: <br />
 ![alt text](Screenshot 2019-05-19 18.08.27.png) <br />
 <br/>
