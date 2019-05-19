@@ -33,7 +33,7 @@ Method 1 Results: <br />
 ![alt text](agg.png) <br />
 
 Method 2 Description: <br />
-Using PCA to reduce the dimensionality (each image is a 22500-dimension vector) of the dataset and achieve high accuracy at the mean time. <br />
+Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) of the dataset and achieve high accuracy at the mean time. <br />
 <br/>
 1.Using GridSearchCV to fit PCA.
 Choosing 4 classes. Each picture is 50x50 size and tranfer to grayscale. So there are 2500 features.
