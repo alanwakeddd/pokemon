@@ -37,7 +37,7 @@ Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) 
 <br/>
 1st Approach: Using GridSearchCV to fit PCA.
 Choosing 4 classes. Each picture is 50x50 size and tranfer to grayscale. So there are 2500 features.
-Parameters are choosing by observation. Random select a range of npc, c, gamma at first. Then change the range by    observe the color map.
+Parameters are choosing by observation. Random select a range of npc, c, gamma at first. Then change the range by observing the color map.<br />
 Results: <br />
 ![alt text](pca1.png) <br />
 <br/>
