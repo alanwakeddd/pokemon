@@ -35,13 +35,13 @@ Method 1 Results: <br />
 Method 2 Description: <br />
 Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) of the dataset and achieve high accuracy at the mean time. <br />
 <br/>
-1st Approach: Using GridSearchCV to fit PCA.
-Choosing 4 classes. Each picture is 50x50 size and tranfer to grayscale. So there are 2500 features.
-Parameters are choosing by observation. Random select a range of npc, c, gamma at first. Then change the range by observing the color map.<br />
+<h4>1st Approach: Using GridCV to do the optimum parameter search.<br /></h4>
+Due to low efficiency of GridSearch, even the Nvidia Tesla P100 GPU can run hours for a full size dataset( 6000,150,150,3) opreation. Therefore, we load only 4 of 12 classes,200 pictures per class as dataset for this particular method. Each picture is shrinked to 50x50 by pixel and transferred to grayscale. So there are 2500 features (800,50,50)->(800,2500).<br />
+Parameters are choosed by observation. At first, guess the range of parameters (npc, c, gamma). Fit data using GridSearchCV, then we can find the converge trendency by observing the color map. It allows us to make a more "educated" guess. Fit data using the new range of parameters. Repeat this process until global maximum are showing in the map.<br />
 Results: <br />
 ![alt text](pca1.png) <br />
 <br/>
-2nd Approach: <br />
+<h4>2nd Approach: <br /></h4>
 - Create two folders (train and test) and store all the pokemon images of the selected nine kinds (Arcanine, Bulbasaur, Charizard, Eevee, Lucario, Mew, Pikachu, Squirtle, and Umbereon) into separated folders
 - Use ImageDataGenerator to transform image data into data point matrices and combine train and test for scaling. At this point, the entire mini batch has 1000 images, each of which has a dimension of 67,500 (150 * 150 * 3)
 - Use StandardScaler() to rescale the data X and fit PCA to find the minimum number of PCs that make PoV greater or equal to 90%
