@@ -24,13 +24,9 @@ Firstly, we decided to build a new and bigger dataset.<br />
 Because there are only limited number of pokemon pictures on flicker, we use  [Google Image](https://www.pyimagesearch.com/2017/12/04/how-to-create-a-deep-learning-dataset-using-google-images/) to build our dataset. <br />
 <br />
 <li>Search for a certain pokemon.</li><br />
-<br />
 ![alt text](google_dataset_1.png) <br />
-<br />
 <li> Download urls of all images on the current webpage through javascript console.</li><br />
-<br />
 ![alt text](google_dataset_2.png) <br /> 
-<br />
 <li> Run dataset_factory/dataset_factory.py to download all images by urls.</li><br />
 <br />
 Our new dataset contains 6000+ images of 12 pokemons.<br />
