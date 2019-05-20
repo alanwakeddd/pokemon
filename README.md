@@ -58,7 +58,7 @@ Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) 
 <p>Parameters are choosed by observation. At first, guess the range of parameters (npc, c, gamma). Fit data using GridSearchCV, then we can find the converge trendency by observing the color map. It allows us to make a more "educated" guess. Fit data using the new range of parameters. Repeat this process until global maximum are showing in the map.</p>
 Results: <br/>
 <img src="pca1.png" width="350" height="350"><br/>
-<ul>Limitaion: <li>Need to sacrifice the quality of the picture to make the compensation for the low performance of the algorithm.</li><li>Less data to train could lead to overfitting.</li><li>Using PCA can lose some spatial information which is important for classification, so the classification accuracy decreases.</li><li>Not as good as CNN for this multiclass classfication problem.</ul>
+<ul>Limitation: <li>Need to sacrifice the quality of the picture to make the compensation for the low performance of the algorithm.</li><li>Less data to train could lead to overfitting.</li><li>Using PCA can lose some spatial information which is important for classification, so the classification accuracy decreases.</li><li>Not as good as CNN for this multiclass classfication problem.</ul>
 <br/>
 <h3>2nd Approach: <br /></h3>
 - Create two folders (train and test) and store all the pokemon images of the selected nine kinds (Arcanine, Bulbasaur, Charizard, Eevee, Lucario, Mew, Pikachu, Squirtle, and Umbereon) into separated folders<br/>
