@@ -34,15 +34,15 @@ Loading the pre-trained parameters from VGG16 and applying its 18 layers to our 
 Method 1 Results: <br />
 ![alt text](agg.png) <br />
 
-<h2>Method 2 Description: <br /></h2>
-Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) of the dataset and achieve high accuracy at the mean time. <br />
+<h2>Method 2 Description: <br/></h2>
+Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) of the dataset and achieve high accuracy at the mean time. <br/>
 <br/>
-<h3>1st Approach: Using GridCV to do the optimum parameter search.<br /></h3>
-Due to low efficiency of GridSearch, even the Nvidia Tesla P100 GPU can run hours for a full size dataset( 6000,150,150,3) opreation. Therefore, we load only 4 of 12 classes,200 pictures per class as dataset for this particular method. Each picture is shrinked to 50x50 by pixel and transferred to grayscale. So there are 2500 features (800,50,50)->(800,2500).<br />
-Parameters are choosed by observation. At first, guess the range of parameters (npc, c, gamma). Fit data using GridSearchCV, then we can find the converge trendency by observing the color map. It allows us to make a more "educated" guess. Fit data using the new range of parameters. Repeat this process until global maximum are showing in the map.<br />
-Results: <br />
-![alt text](pca1.png) <br />
-
+<h3>1st Approach: Using GridCV to do the optimum parameter search.<br/></h3>
+<p>Due to low efficiency of GridSearch, even the Nvidia Tesla P100 GPU can run hours for a full size dataset( 6000,150,150,3) opreation. Therefore, we load only 4 of 12 classes,200 pictures per class as dataset for this particular method. Each picture is shrinked to 50x50 by pixel and transferred to grayscale. So there are 2500 features (800,50,50)->(800,2500).</p><br/>
+<p>Parameters are choosed by observation. At first, guess the range of parameters (npc, c, gamma). Fit data using GridSearchCV, then we can find the converge trendency by observing the color map. It allows us to make a more "educated" guess. Fit data using the new range of parameters. Repeat this process until global maximum are showing in the map.</p><br/>
+Results: <br/>
+<img src="pca1.png" alt="Trulli" width="500" height="333">
+<br/>
 <br/>
 <h3>2nd Approach: <br /></h3>
 - Create two folders (train and test) and store all the pokemon images of the selected nine kinds (Arcanine, Bulbasaur, Charizard, Eevee, Lucario, Mew, Pikachu, Squirtle, and Umbereon) into separated folders
