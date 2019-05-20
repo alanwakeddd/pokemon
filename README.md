@@ -58,7 +58,7 @@ Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) 
 <p>Parameters are choosed by observation. At first, guess the range of parameters (npc, c, gamma). Fit data using GridSearchCV, then we can find the converge trendency by observing the color map. It allows us to make a more "educated" guess. Fit data using the new range of parameters. Repeat this process until global maximum are showing in the map.</p>
 Results: <br/>
 <img src="pca1.png" width="350" height="350"><br/>
-<p>Limitaion: Need to sarcrify the quality of the picture to compensate the low performance of the algorithm. Less data than features could lead to overfitting. Not better than CNN.</p>
+<p><ul>Limitaion: <li>Need to sarcrify the quality of the picture to compensate the low performance of the algorithm.</li><li>Less data to train could lead to overfitting.</li><li>Using PCA can lose some spatial information which is important for classification, so the classification accuracy decreases.</li><li>Not as good as CNN for this multiclass classfication problem.</ul></p>
 <br/>
 <h3>2nd Approach: <br /></h3>
 - Create two folders (train and test) and store all the pokemon images of the selected nine kinds (Arcanine, Bulbasaur, Charizard, Eevee, Lucario, Mew, Pikachu, Squirtle, and Umbereon) into separated folders<br/>
@@ -67,7 +67,7 @@ Results: <br/>
 - Create an array of number of PCs for test (2 to the minimum number we just found) and an array of Gamma.<br/>
 - In the for loops of PC for test and Gamma for test, fit PCA on training data and SVD on transformed training data in each iteration and find the parameters which make the best accuracy <br/>
 
-Limitation: large dimension of almost 70,000 features but only 1,000 data points. PCA works as “feature selection” that gets rid of noises or correlations inside an image before applying any classifier. It does not work well in this case because some weird images (i.e.: pokemon on a T-shirt) are hard to detect. <br />
+<p>Limitation: large dimension of almost 70,000 features but only 1,000 data points. PCA works as “feature selection” that gets rid of noises or correlations inside an image before applying any classifier. It does not work well in this case because some weird images (i.e.: pokemon on a T-shirt) are hard to detect. <br /></p>
 
 Results: <br />
 ![alt text](pca2.png) <br />
