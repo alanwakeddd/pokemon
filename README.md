@@ -43,7 +43,12 @@ Results: <br />
 <br/>
 2nd Approach: <br />
 - Create two folders (train and test) and store all the pokemon images of the selected nine kinds (Arcanine, Bulbasaur, Charizard, Eevee, Lucario, Mew, Pikachu, Squirtle, and Umbereon) into separated folders
-- Use ImageDataGenerator to tranform image data into data point matrices and combine train and test for scaling
-- 
-Method 2 Results: <br />
-Still working on...
+- Use ImageDataGenerator to transform image data into data point matrices and combine train and test for scaling. At this point, the entire mini batch has 1000 images, each of which has a dimension of 67,500 (150 * 150 * 3)
+- Use StandardScaler() to rescale the data X and fit PCA to find the minimum number of PCs that make PoV greater or equal to 90%
+- Create an array of number of PCs for test (2 to the minimum number we just found) and an array of Gamma.
+- In the for loops of PC for test and Gamma for test, fit PCA on training data and SVD on transformed training data in each iteration and find the parameters which make the best accuracy <br />
+
+Limitation: large dimension of almost 70,000 features but only 1,000 data points. PCA works as “feature selection” that gets rid of noises or correlations inside an image before applying any classifier. It does not work well in this case because some weird images (i.e.: pokemon on a T-shirt) are hard to detect. <br />
+
+Results: <br />
+![alt text](pca2.png) <br />
