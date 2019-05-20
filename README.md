@@ -42,6 +42,7 @@ Due to low efficiency of GridSearch, even the Nvidia Tesla P100 GPU can run hour
 Parameters are choosed by observation. At first, guess the range of parameters (npc, c, gamma). Fit data using GridSearchCV, then we can find the converge trendency by observing the color map. It allows us to make a more "educated" guess. Fit data using the new range of parameters. Repeat this process until global maximum are showing in the map.<br />
 Results: <br />
 ![alt text](pca1.png) <br />
+
 <br/>
 <h3>2nd Approach: <br /></h3>
 - Create two folders (train and test) and store all the pokemon images of the selected nine kinds (Arcanine, Bulbasaur, Charizard, Eevee, Lucario, Mew, Pikachu, Squirtle, and Umbereon) into separated folders
