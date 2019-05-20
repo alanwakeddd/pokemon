@@ -8,7 +8,7 @@ images. The current model we found on Pyimagesearch trains the CNN using Keras a
 deep learning to build the underneath model of Pokedex. Because of the limited size of its
 dataset and the single approach it applies, the model accuracy is not ideal. We would like to
 build a better-performed model on top of the existing one by increasing the size of the
-dataset and introducing different approaches: pre-trained VGG16 and PCA.
+dataset and introducing different approaches: pre-trained VGG16 and PCA.<br />
 
 <h3>Group 77 members are as below: <br /></h3>
 <ul>
@@ -18,21 +18,36 @@ dataset and introducing different approaches: pre-trained VGG16 and PCA.
 <li>Xintong Song (N13489466) <br /></li>
 </ul>
 <br />
-One of the primary limitations of the original project is the small amount of training data. I tested on various 
-images and at times the classifications were incorrect. When this happened, the input image + network more closely 
-and found that the color(s) most dominant in the image influence the classification dramatically. 
+This problem is actually a multi-classification problem. One of the primary limitations of the original project is the small amount of training data. I tested on various images and at times the classifications were incorrect. When this happened, the input image + network more closely and found that the color(s) most dominant in the image influence the classification dramatically. <br />
 
-Firstly, we built a new dataset contains 6000+ images of 12 pokemons and tested it on original CNN network.
-<br />
+Firstly, we decided to build a new and bigger dataset.<br />
+Because there are only limited number of pokemon pictures on flicker, we use  [Google Image](https://www.pyimagesearch.com/2017/12/04/how-to-create-a-deep-learning-dataset-using-google-images/) to build our dataset. <br />
+Search for a certain pokemon.<br />
+![alt text](google_dataset_1.png) <br />
+Download urls of all images on the current webpage through javascript console.<br />
+![alt text](google_dataset_2.png) <br /> 
+Run dataset_factory/dataset_factory.py to download all images by urls.<br />
+
+Our new dataset contains 6000+ images of 12 pokemons.<br />
+Because there are big amounts of pictures, we used 4 Tesla P100 16GB GPUs to train our networks in this project.<br />
+Then, we tested it on original CNN network with train : test = 75% : 25%. <br />
+
 ![alt text](cnn_new_dataset.png) <br />
 <br />
-Then, we tried several different model to deal with this multi-classification.
-<br />
+After 600 epochs, the train_acc reached 0.96 but the val_acc (test accuracy) still below 0.8 and it is really bad for image classification.<br />
+Then, we tried several different model to deal with this multi-classification.<br />
 <h2>Method 1 Description: <br /></h2>
-Loading the pre-trained parameters from VGG16 and applying its 18 layers to our 5000 data points.
+VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image Recognition”. The model achieves 0.92 top-5 test accuracy in ImageNet, which is a dataset of over 14 million images belonging to 1000 classes. Thus it is appropriate to deal with our problem. <br />
+![alt text](vgg_structure.png) <br />
+<br />
 
-Method 1 Results: <br/>>
-![alt text](agg.png) <br/>
+We loaded the pre-trained parameters from VGG16 and applied its layers with 4 extra layers includes 1 flatten layer, 2 fully connected layers and 1 dropout layer to our dataset.<br />
+![alt text](vgg16_extra_layers.png) <br />
+<br />
+Method 1 Results: <br />
+![alt text](agg.png) <br />
+VGG16 significantly improve the test accuracy to 0.96.<br />
+<br />
 
 <h2>Method 2 Description: <br/></h2>
 Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) of the dataset and achieve high accuracy at the mean time. <br/>
