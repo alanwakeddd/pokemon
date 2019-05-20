@@ -22,11 +22,11 @@ This problem is actually a multi-classification problem. One of the primary limi
 
 Firstly, we decided to build a new and bigger dataset.<br />
 Because there are only limited number of pokemon pictures on flicker, we use  [Google Image](https://www.pyimagesearch.com/2017/12/04/how-to-create-a-deep-learning-dataset-using-google-images/) to build our dataset. <br />
-Search for a certain pokemon.<br />
+>Search for a certain pokemon.<br />
 ![alt text](google_dataset_1.png) <br />
-Download urls of all images on the current webpage through javascript console.<br />
+>Download urls of all images on the current webpage through javascript console.<br />
 ![alt text](google_dataset_2.png) <br /> 
-Run dataset_factory/dataset_factory.py to download all images by urls.<br />
+>Run dataset_factory/dataset_factory.py to download all images by urls.<br />
 
 Our [new dataset](https://www.dropbox.com/s/fvmfh7mq96o6aq0/new_dataset.zip?dl=0) contains 6000+ images of 12 pokemons.<br />
 Because there are big amounts of pictures, we used 4 Tesla P100 16GB GPUs to train our networks in this project.<br />
