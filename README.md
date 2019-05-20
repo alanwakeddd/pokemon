@@ -28,7 +28,7 @@ Download urls of all images on the current webpage through javascript console.<b
 ![alt text](google_dataset_2.png) <br /> 
 Run dataset_factory/dataset_factory.py to download all images by urls.<br />
 
-Our new dataset contains 6000+ images of 12 pokemons.<br />
+Our [new dataset](https://www.dropbox.com/s/fvmfh7mq96o6aq0/new_dataset.zip?dl=0) contains 6000+ images of 12 pokemons.<br />
 Because there are big amounts of pictures, we used 4 Tesla P100 16GB GPUs to train our networks in this project.<br />
 Then, we tested it on original CNN network with train : test = 75% : 25%. <br />
 
