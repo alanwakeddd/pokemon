@@ -31,7 +31,7 @@ Then, we tried several different model to deal with this multi-classification.
 <h2>Method 1 Description: <br /></h2>
 Loading the pre-trained parameters from VGG16 and applying its 18 layers to our 5000 data points.
 
-<h3>Method 1 Results: <br/></h3>
+Method 1 Results: <br/>>
 ![alt text](agg.png) <br/>
 
 <h2>Method 2 Description: <br/></h2>
@@ -40,8 +40,8 @@ Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) 
 <h3>1st Approach: Using GridCV to do the optimum parameter search.<br/></h3>
 <p>Due to low efficiency of GridSearch, even the Nvidia Tesla P100 GPU can run hours for a full size dataset( 6000,150,150,3) opreation. Therefore, we load only 4 of 12 classes,200 pictures per class as dataset for this particular method. Each picture is shrinked to 50x50 by pixel and transferred to grayscale. So there are 2500 features (800,50,50)->(800,2500).</p><br/>
 <p>Parameters are choosed by observation. At first, guess the range of parameters (npc, c, gamma). Fit data using GridSearchCV, then we can find the converge trendency by observing the color map. It allows us to make a more "educated" guess. Fit data using the new range of parameters. Repeat this process until global maximum are showing in the map.</p><br/>
-<h3>Results: <br/></h3>
-<img src="pca1.png" width=100" height="200">
+Results: <br/>
+<img src="pca1.png" width=300" height="400">
 <br/>
 <br/>
 <h3>2nd Approach: <br /></h3>
@@ -53,5 +53,5 @@ Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) 
 
 Limitation: large dimension of almost 70,000 features but only 1,000 data points. PCA works as “feature selection” that gets rid of noises or correlations inside an image before applying any classifier. It does not work well in this case because some weird images (i.e.: pokemon on a T-shirt) are hard to detect. <br />
 
-<h3>Results: <br /></h3>
+Results: <br />
 ![alt text](pca2.png) <br />
