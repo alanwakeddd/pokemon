@@ -38,7 +38,7 @@ After 600 epochs, the train_acc reached 0.96 but the val_acc (test accuracy) sti
 Then, we tried several different model to deal with this multi-classification.<br />
 <h2>Method 1 Description: <br /></h2>
 VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image Recognition”. The model achieves 0.92 top-5 test accuracy in ImageNet, which is a dataset of over 14 million images belonging to 1000 classes. Thus it is appropriate to deal with our problem. <br />
-![alt text](vgg_structure.png) <br />
+<img src="vgg_structure.png">
 <br />
 
 We loaded the pre-trained parameters from VGG16 and applied its layers with 4 extra layers includes 1 flatten layer, 2 fully connected layers and 1 dropout layer to our dataset.<br />
