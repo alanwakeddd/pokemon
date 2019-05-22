@@ -1,6 +1,6 @@
 <h2># Pokemon Classification</h2>
-This is a group project for ECE-GY 6143 Introduction to Machine Learning at NYU Tandon.<br />
-<br />
+This is a group project for ECE-GY 6143 Introduction to Machine Learning at NYU Tandon.<br/>
+<br/>
 Pokemon, a popular TV show, video game, and trading card series, originated from Japan
 and has been spread all over the world since 1996. A Pokedex, a device that exists in the
 world of Pokemon, is used to recognize Pokemon by scanning or learning from Pokemon
@@ -8,20 +8,19 @@ images. The current model we found on Pyimagesearch trains the CNN using Keras a
 deep learning to build the underneath model of Pokedex. Because of the limited size of its
 dataset and the single approach it applies, the model accuracy is not ideal. We would like to
 build a better-performed model on top of the existing one by increasing the size of the
-dataset and introducing different approaches: pre-trained VGG16 and PCA.<br />
+dataset and introducing different approaches: pre-trained VGG16 and PCA.<br/>
 
-<h3>Group 77 members are as below: <br /></h3>
+<h3>Group 77 members are as below: <br/></h3>
 <ul>
-<li>Qin Hu (N17006855) <br /></li>
-<li>Bohan Zhang (N13992422) <br /></li>
-<li>Yichi Zhang (N19888469) <br /></li>
-<li>Xintong Song (N13489466) <br /></li>
+<li>Qin Hu (N17006855) <br/></li>
+<li>Bohan Zhang (N13992422) <br/></li>
+<li>Yichi Zhang (N19888469) <br/></li>
+<li>Xintong Song (N13489466) <br/></li>
 </ul>
-<br />
-This problem is actually a multi-classification problem. One of the primary limitations of the original project is the small amount of training data. I tested on various images and at times the classifications were incorrect. When this happened, the input image + network more closely and found that the color(s) most dominant in the image influence the classification dramatically. <br />
+<p>This problem is actually a multi-classification problem. One of the primary limitations of the original project is the small amount of training data. I tested on various images and at times the classifications were incorrect. When this happened, the input image + network more closely and found that the color(s) most dominant in the image influence the classification dramatically. </p>
 
-Firstly, we decided to build a new and bigger dataset.<br />
-Because there are only limited number of pokemon pictures on flicker, we use  [Google Image](https://www.pyimagesearch.com/2017/12/04/how-to-create-a-deep-learning-dataset-using-google-images/) to build our dataset. <br />
+<p>Firstly, we decided to build a new and bigger dataset.<br />
+Because there are only limited number of pokemon pictures on flicker, we use  [Google Image](https://www.pyimagesearch.com/2017/12/04/how-to-create-a-deep-learning-dataset-using-google-images/) to build our dataset. </p>
 >Search for a certain pokemon.<br />
 ![alt text](google_dataset_1.png) <br />
 >Download urls of all images on the current webpage through javascript console.<br />
@@ -71,3 +70,5 @@ Results: <br/>
 
 Results: <br />
 ![alt text](pca2.png) <br />
+<h3>Conclusion:</h3>
+<p>The results shows that CNN is the most effective method for this problem. With the implementation of VGG16 and data generator, we improve the accuracy from 0.8 to 0.96, which is very good. The PCA methods are not working as good as the CNN. It's probably because PCA can lose some spatial information which is important for classification. And for efficiency wise, CNN is much faster than PCA when using the same Nvidia P100 GPU.<br/></p>
