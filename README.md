@@ -70,4 +70,4 @@ Results: <br/>
 Results: <br />
 <img src="pca2.png"><br />
 <h3>Conclusion:</h3>
-<p>The results shows that CNN is the most effective method for this problem. With the implementation of VGG16 and data generator, we improve the accuracy from 0.8 to 0.96, which is very good. The PCA methods are not working as good as the CNN. It's probably because PCA can lose some spatial information which is important for classification. And for efficiency wise, CNN is much faster than PCA when using the same Nvidia P100 GPU.<br/></p>
+<p>The results show that CNN is the most effective method for this problem. With the implementation of VGG16 and data generator, we improve the accuracy from 0.8 to 0.96, which is very good. The PCA methods are not working as good as the CNN. It's probably mainly because PCA can lose some spatial information which is important for classification. And for efficiency wise, CNN is much faster than PCA when using the same Nvidia P100 GPU.<br/></p>
