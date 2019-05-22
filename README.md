@@ -17,7 +17,7 @@ dataset and introducing different approaches: pre-trained VGG16 and PCA.<br/>
 <li>Yichi Zhang (N19888469) <br/></li>
 <li>Xintong Song (N13489466) <br/></li>
 </ul>
-<p>This problem is actually a multi-classification problem. One of the primary limitations of the original project is the small amount of training data. I tested on various images and at times the classifications were incorrect. When this happened, the input image + network more closely and found that the color(s) most dominant in the image influence the classification dramatically. </p>
+<p>This problem is actually a multi-classification problem. One of the primary limitations of the original project is the small amount of training data. We tested on various images and at times the classifications were incorrect. When this happened, we inspected the input images and network more closely and found that the most dominant color(s) in the image influence the classification dramatically. </p>
 
 <p>Firstly, we decided to build a new and bigger dataset.<br />
 Because there are only limited number of pokemon pictures on flicker, we use  [Google Image](https://www.pyimagesearch.com/2017/12/04/how-to-create-a-deep-learning-dataset-using-google-images/) to build our dataset. </p>
@@ -33,9 +33,9 @@ Then, we tested it on original CNN network with train : test = 75% : 25%. <br />
 <img src="cnn_new_dataset.png">
 <br />
 After 600 epochs, the train_acc reached 0.96 but the val_acc (test accuracy) still below 0.8 and it is really bad for image classification.<br />
-Then, we tried several different model to deal with this multi-classification.<br />
+Then, we tried 2 different methods to deal with this multi-classification problem.<br />
 <h2>Method 1 Description: <br /></h2>
-VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image Recognition”. The model achieves 0.92 top-5 test accuracy in ImageNet, which is a dataset of over 14 million images belonging to 1000 classes. Thus it is appropriate to deal with our problem. <br />
+VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image Recognition”. The model achieves 0.92 top-5 test accuracy in ImageNet, which is a dataset of over 14 million images belonging to 1000 classes. Thus, it is appropriate to deal with our problem. <br />
 <img src="vgg_structure.png">
 <br />
 
