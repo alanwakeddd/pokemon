@@ -22,16 +22,15 @@ dataset and introducing different approaches: pre-trained VGG16 and PCA.<br/>
 <p>Firstly, we decided to build a new and bigger dataset.<br />
 Because there are only limited number of pokemon pictures on flicker, we use  [Google Image](https://www.pyimagesearch.com/2017/12/04/how-to-create-a-deep-learning-dataset-using-google-images/) to build our dataset. </p>
 >Search for a certain pokemon.<br />
-![alt text](google_dataset_1.png) <br />
+<img src="google_dataset_1.png">
 >Download urls of all images on the current webpage through javascript console.<br />
-![alt text](google_dataset_2.png) <br /> 
+<img src="google_dataset_2.png">
 >Run dataset_factory/dataset_factory.py to download all images by urls.<br />
 
 Our [new dataset](https://www.dropbox.com/s/fvmfh7mq96o6aq0/new_dataset.zip?dl=0) contains 6000+ images of 12 pokemons.<br />
 Because there are big amounts of pictures, we used 4 Tesla P100 16GB GPUs to train our networks in this project.<br />
 Then, we tested it on original CNN network with train : test = 75% : 25%. <br />
-
-![alt text](cnn_new_dataset.png) <br />
+<img src="cnn_new_dataset.png">
 <br />
 After 600 epochs, the train_acc reached 0.96 but the val_acc (test accuracy) still below 0.8 and it is really bad for image classification.<br />
 Then, we tried several different model to deal with this multi-classification.<br />
@@ -41,10 +40,10 @@ VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zis
 <br />
 
 We loaded the pre-trained parameters from VGG16 and applied its layers with 4 extra layers includes 1 flatten layer, 2 fully connected layers and 1 dropout layer to our dataset.<br />
-![alt text](vgg16_extra_layers.png) <br />
+<img src="vgg16_extra_layers.png">
 <br />
 Method 1 Results: <br />
-![alt text](agg.png) <br />
+<img src="agg.png">
 VGG16 significantly improve the test accuracy to 0.96.<br />
 <br />
 
@@ -56,7 +55,7 @@ Using PCA to reduce the dimensionality (each image is a 67500-dimension vector) 
 <p>Due to low efficiency of GridSearch, even the Nvidia Tesla P100 GPU can run hours for a full size dataset (6000,150,150,3) opreation. Therefore, we load only 4 of 12 classes,200 pictures per class as dataset for this particular method. Each picture is shrinked to 50x50 by pixel and transferred to grayscale. However, these data are carefully picked so that there are less irrelevant pictures in these dataset.  There are 2500 features in tatol (800,50,50)->(800,2500).</p>
 <p>Parameters are choosed by observation. At first, guess the range of parameters (npc, c, gamma). Fit data using GridSearchCV, then we can find the converge trendency by observing the color map. It allows us to make a more "educated" guess. Fit data using the new range of parameters. Repeat this process until global maximum are showing in the map.</p>
 Results: <br/>
-<img src="pca1.png" width="350" height="350"><br/>
+<img src="pca1.png">
 <ul>Limitation: <li>Need to sacrifice the quality of the picture to make the compensation for the low performance of the algorithm.</li><li>Less data to train could lead to overfitting.</li><li>Using PCA can lose some spatial information which is important for classification, so the classification accuracy decreases.</li><li>Not as good as CNN for this multiclass classfication problem.</ul>
 <br/>
 <h3>2nd Approach: <br /></h3>
@@ -69,6 +68,6 @@ Results: <br/>
 <p>Limitation: large dimension of almost 70,000 features but only 1,000 data points. PCA works as “feature selection” that gets rid of noises or correlations inside an image before applying any classifier. It does not work well in this case because some weird images (i.e.: pokemon on a T-shirt) are hard to detect. <br/></p>
 
 Results: <br />
-![alt text](pca2.png) <br />
+<img src="pca2.png"><br />
 <h3>Conclusion:</h3>
 <p>The results shows that CNN is the most effective method for this problem. With the implementation of VGG16 and data generator, we improve the accuracy from 0.8 to 0.96, which is very good. The PCA methods are not working as good as the CNN. It's probably because PCA can lose some spatial information which is important for classification. And for efficiency wise, CNN is much faster than PCA when using the same Nvidia P100 GPU.<br/></p>
