@@ -19,33 +19,33 @@ dataset and introducing different approaches: pre-trained VGG16 and PCA.<br/>
 </ul>
 <p>This problem is actually a multi-classification problem. One of the primary limitations of the original project is the small amount of training data. We tested on various images and at times the classifications were incorrect. When this happened, we inspected the input images and network more closely and found that the most dominant color(s) in the image influence the classification dramatically. </p>
 
-<p>Firstly, we decided to build a new and bigger dataset.<br />
+<p>Firstly, we decided to build a new and bigger dataset.<br/>
 Because there are only limited number of pokemon pictures on flicker, we use  [Google Image](https://www.pyimagesearch.com/2017/12/04/how-to-create-a-deep-learning-dataset-using-google-images/) to build our dataset. </p>
->Search for a certain pokemon.<br />
+>Search for a certain pokemon.<br/>
 <img src="google_dataset_1.png">
->Download urls of all images on the current webpage through javascript console.<br />
+>Download urls of all images on the current webpage through javascript console.<br/>
 <img src="google_dataset_2.png">
->Run dataset_factory/dataset_factory.py to download all images by urls.<br />
+>Run dataset_factory/dataset_factory.py to download all images by urls.<br/>
 
-Our [new dataset](https://www.dropbox.com/s/fvmfh7mq96o6aq0/new_dataset.zip?dl=0) contains 6000+ images of 12 pokemons.<br />
-Because there are big amounts of pictures, we used 4 Tesla P100 16GB GPUs to train our networks in this project.<br />
-Then, we tested it on original CNN network with train : test = 75% : 25%. <br />
+Our [new dataset](https://www.dropbox.com/s/fvmfh7mq96o6aq0/new_dataset.zip?dl=0) contains 6000+ images of 12 pokemons.<br/>
+Because there are big amounts of pictures, we used 4 Tesla P100 16GB GPUs to train our networks in this project.<br/>
+Then, we tested it on original CNN network with train : test = 75% : 25%. <br/>
 <img src="cnn_new_dataset.png">
-<br />
-After 600 epochs, the train_acc reached 0.96 but the val_acc (test accuracy) still below 0.8 and it is really bad for image classification.<br />
-Then, we tried 2 different methods to deal with this multi-classification problem.<br />
-<h2>Method 1 Description: <br /></h2>
-VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image Recognition”. The model achieves 0.92 top-5 test accuracy in ImageNet, which is a dataset of over 14 million images belonging to 1000 classes. Thus, it is appropriate to deal with our problem. <br />
+<br/>
+After 600 epochs, the train_acc reached 0.96 but the val_acc (test accuracy) still below 0.8 and it is really bad for image classification.<br/>
+Then, we tried 2 different methods to deal with this multi-classification problem.<br/>
+<h2>Method 1 Description: <br/></h2>
+VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image Recognition”. The model achieves 0.92 top-5 test accuracy in ImageNet, which is a dataset of over 14 million images belonging to 1000 classes. Thus, it is appropriate to deal with our problem. <br/>
 <img src="vgg_structure.png">
-<br />
+<br/>
 
-We loaded the pre-trained parameters from VGG16 and applied its layers with 4 extra layers includes 1 flatten layer, 2 fully connected layers and 1 dropout layer to our dataset.<br />
+We loaded the pre-trained parameters from VGG16 and applied its layers with 4 extra layers includes 1 flatten layer, 2 fully connected layers and 1 dropout layer to our dataset.<br/>
 <img src="vgg16_extra_layers.png">
 <br />
-Method 1 Results: <br />
+Method 1 Results: <br/>
 <img src="agg.png">
-VGG16 significantly improve the test accuracy to 0.96.<br />
-<br />
+VGG16 significantly improve the test accuracy to 0.96.<br/>
+<br/>
 
 
 <h2>Method 2 Description: <br/></h2>
@@ -58,7 +58,7 @@ Results: <br/>
 <img src="pca1.png">
 <ul>Limitation: <li>Need to sacrifice the quality of the picture to make the compensation for the low performance of the algorithm.</li><li>Less data to train could lead to overfitting.</li><li>Using PCA can lose some spatial information which is important for classification, so the classification accuracy decreases.</li><li>Not as good as CNN for this multiclass classfication problem.</ul>
 <br/>
-<h3>2nd Approach: <br /></h3>
+<h3>2nd Approach: <br/></h3>
 - Create two folders (train and test) and store all the pokemon images of the selected nine kinds (Arcanine, Bulbasaur, Charizard, Eevee, Lucario, Mew, Pikachu, Squirtle, and Umbereon) into separated folders<br/>
 - Use ImageDataGenerator to transform image data into data point matrices and combine train and test for scaling. At this point, the entire mini batch has 1000 images, each of which has a dimension of 67,500 (150 * 150 * 3)<br/>
 - Use StandardScaler() to rescale the data X and fit PCA to find the minimum number of PCs that make PoV greater or equal to 90%<br/>
@@ -67,7 +67,7 @@ Results: <br/>
 
 <p>Limitation: large dimension of almost 70,000 features but only 1,000 data points. PCA works as “feature selection” that gets rid of noises or correlations inside an image before applying any classifier. It does not work well in this case because some weird images (i.e.: pokemon on a T-shirt) are hard to detect. <br/></p>
 
-Results: <br />
-<img src="pca2.png"><br />
+Results: <br/>
+<img src="pca2.png"><br/>
 <h3>Conclusion:</h3>
 <p>The results show that CNN is the most effective method for this problem. With the implementation of VGG16 and data generator, we improve the accuracy from 0.8 to 0.96, which is very good. The PCA methods are not working as good as the CNN. It's probably mainly because PCA can lose some spatial information which is important for classification. And for efficiency wise, CNN is much faster than PCA when using the same Nvidia P100 GPU.<br/></p>
